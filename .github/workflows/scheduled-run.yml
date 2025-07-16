@@ -1,0 +1,30 @@
+name: Daily Run at 08:00 UTC
+
+on:
+  schedule:
+    - cron: '0 8 * * *'  # Ogni giorno alle 08:00 UTC
+  workflow_dispatch:     # Permette l'avvio manuale
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install -r requirements.txt
+
+      - name: Run script
+        run: |
+          source venv/bin/activate
+          python main.py -em "${{ secrets.ACCOUNT_EMAIL }}" -pw "${{ secrets.ACCOUNT_PASSWORD }}"
