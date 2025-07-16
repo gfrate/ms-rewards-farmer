@@ -343,7 +343,6 @@ class Utils:
             (By.ID, "idSIButton9"),
             (By.ID, "bnp_btn_accept"),
             (By.ID, "acceptButton"),
-            (By.CLASS_NAME, "dashboardPopUpPopUpSelectButton"),  # seems to be unclickable
             (By.CSS_SELECTOR, "#cookie-banner button:first-child"),
             (By.CSS_SELECTOR, "#wcpConsentBannerCtrl button:first-child"),
         ]
